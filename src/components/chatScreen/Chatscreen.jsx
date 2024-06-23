@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Input } from "../input/Input";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 export const Chatscreen = () => {
   const [query, setQuery] = useState("");
@@ -15,14 +15,14 @@ export const Chatscreen = () => {
             {
               parts: [
                 {
-                  text: `Suppose you are my girl friend and reply according to it ${userQuery}`,
+                  text: `Suppose you are best friend and reply according to it ${userQuery}`,
                 },
               ],
             },
           ],
         }
       );
-      const aiMessage = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI";
+      const aiMessage = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "Busy! message you later";
 
       // Append both user and AI messages to the state
       setMessages((prevMessages) => [
@@ -38,12 +38,15 @@ export const Chatscreen = () => {
     <>
       <div className="w-full h-[calc(100%-3rem)]">
         {/* screen */}
-        <div className="w-full h-[calc(100%-4rem)] overflow-y-auto">
+        <div className="w-full h-[calc(100%-4rem)] overflow-y-auto no-scrollbar flex flex-col gap-4 md:px-16 py-4 ">
           {messages.map((message, index) => (
-            <div className="text-white px-16 mt-4" key={index}>
-              <p className="text-violet-200">DEEPAK : {message.user}</p>
-              <p>GIRLFRIEND : {message.AI}</p>
-            </div>
+          <Fragment key={index}>
+        
+              <p className="text-violet-200 self-end max-w-[70%] text-end bg-violet-400/50 rounded-lg mt-2 w-fit p-3 px-6"> {message.user}</p>
+
+              <p className="text-violet-200 max-w-[70%] text-start bg-violet-400/25 rounded-lg mt-2 w-fit p-3 px-6"> {message.AI}</p>
+          </Fragment>
+            
           ))}
         </div>
         <Input
