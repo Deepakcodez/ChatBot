@@ -38,13 +38,13 @@ export const Chatscreen = () => {
     <>
       <div className="w-full h-[calc(100%-3rem)]">
         {/* screen */}
-        <div className="w-full h-[calc(100%-4rem)] overflow-y-auto no-scrollbar flex flex-col gap-4 md:px-16 py-4 ">
+        <div className="w-full h-[calc(100%-4rem)] overflow-y-auto no-scrollbar flex flex-col gap-4 md:px-16 px-4 py-4 ">
           {messages.map((message, index) => (
           <Fragment key={index}>
         
-              <p className="text-violet-200 self-end max-w-[70%] text-end bg-violet-400/50 rounded-lg mt-2 w-fit p-3 px-6"> {message.user}</p>
+              <p className="text-violet-200 self-end max-w-[70%] text-end bg-violet-400/50 rounded-lg mt-2 w-fit p-3 px-6 ring-1 ring-violet-300/50"> {message.user}</p>
 
-              <p className="text-violet-200 max-w-[70%] text-start bg-violet-400/25 rounded-lg mt-2 w-fit p-3 px-6"> {message.AI}</p>
+              <p className="text-violet-200 max-w-[70%] text-start bg-violet-400/25 rounded-lg mt-2 w-fit p-3 px-6  ring-1 ring-violet-300/50"> {message.AI}</p>
           </Fragment>
             
           ))}
